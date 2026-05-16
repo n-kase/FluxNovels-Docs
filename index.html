@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FluxNovels - サポート & プライバシーポリシー</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;600&family=Noto+Serif+JP:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;600&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #ffffff;
             --text-color: #1d1d1f;
-            --accent-color: #c9a063;
-            /* Premium Gold */
+            --accent-color: #c9a063; /* Premium Gold */
             --secondary-bg: #f5f5f7;
             --glass-bg: rgba(255, 255, 255, 0.8);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -45,9 +41,7 @@
             overflow-x: hidden;
         }
 
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3, h4 {
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
         }
@@ -82,8 +76,8 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-color);
-            margin-left: 2rem;
-            font-size: 0.9rem;
+            margin-left: 1.5rem;
+            font-size: 0.85rem;
             opacity: 0.7;
             transition: var(--transition);
         }
@@ -104,7 +98,7 @@
             max-width: 600px;
             width: 100%;
             border-radius: 32px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
             margin: 3rem 0;
             transition: var(--transition);
         }
@@ -180,7 +174,7 @@
             font-size: 0.95rem;
         }
 
-        /* Privacy Policy Container */
+        /* Privacy Policy & Specs Container */
         .privacy-box {
             background: var(--secondary-bg);
             padding: 3rem;
@@ -189,19 +183,14 @@
             line-height: 1.8;
         }
 
-        .privacy-box h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .privacy-box p {
-            margin-bottom: 1rem;
-        }
-
-        .privacy-box ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
+        .privacy-box h3 { margin-top: 2rem; margin-bottom: 1rem; }
+        .privacy-box h4 { margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        .privacy-box p { margin-bottom: 1rem; }
+        .privacy-box ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+        th, td { padding: 0.8rem; border-bottom: 1px solid rgba(128,128,128,0.1); text-align: left; }
+        th { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); }
 
         /* Footer */
         footer {
@@ -213,21 +202,12 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            section {
-                padding: 60px 5%;
-            }
-
-            .privacy-box {
-                padding: 1.5rem;
-            }
+            .nav-links { display: none; }
+            section { padding: 60px 5%; }
+            .privacy-box { padding: 1.5rem; }
         }
     </style>
 </head>
-
 <body>
 
     <nav>
@@ -270,8 +250,7 @@
         <h2 class="section-title">よくある質問</h2>
         <div class="faq-item">
             <span class="faq-question">縦書き表示にならないサイトがあります。</span>
-            <p class="faq-answer">
-                本アプリは汎用的なビューアーであり、すべてのサイトに対して自動的な最適化を保証するものではありません。表示が乱れる場合は、サイトのHTML構造を理解した上で、ご自身での設定や工夫が必要となる場合があります。また、ご利用の際は対象サイトの利用規約を必ず確認し、改変や外部ビューアーでの閲覧が禁止されているサイトでは使用しないでください。</p>
+            <p class="faq-answer">本アプリは汎用的なビューアーであり、すべてのサイトに対して自動的な最適化を保証するものではありません。表示が乱れる場合は、サイトのHTML構造を理解した上で、ご自身での設定や工夫が必要となる場合があります。また、ご利用の際は対象サイトの利用規約を必ず確認し、改変や外部ビューアーでの閲覧が禁止されているサイトでは使用しないでください。</p>
         </div>
         <div class="faq-item">
             <span class="faq-question">データの同期がうまくいきません。</span>
@@ -282,152 +261,100 @@
             <p class="faq-answer">一度読み込んだエピソードはキャッシュされますが、永続的なオフライン保存機能については今後のアップデートで拡張予定です。</p>
         </div>
     </section>
+
     <section id="extended-profiles">
         <h2 class="section-title">高度な設定：拡張プロファイル</h2>
         <div class="privacy-box">
-            <p>FluxNovelsは、独自の「拡張プロファイル」を作成することで、標準で対応していないサイトも美しい縦書きで読み込むことが可能です。これは、サイトの構造をアプリに教えるための「設計図」です。</p>
+            <p>FluxNovelsは、独自の「拡張プロファイル」を作成することで、標準で対応していないサイトも美しい縦書きで読み込むことが可能です。</p>
             
-            <h3 style="margin-top: 2rem; border-bottom: 2px solid var(--accent-color); display: inline-block;">詳細仕様リファレンス</h3>
+            <h3 style="border-bottom: 2px solid var(--accent-color); display: inline-block;">詳細仕様リファレンス</h3>
             
-            <h4 style="margin-top: 1.5rem;">1. サイト識別とマッチング</h4>
-            <div style="overflow-x: auto; margin-top: 1rem;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-                    <thead>
-                        <tr style="border-bottom: 1px solid var(--accent-color);">
-                            <th style="text-align: left; padding: 0.5rem;">項目</th>
-                            <th style="text-align: left; padding: 0.5rem;">説明</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
-                            <td style="padding: 0.5rem;"><code>workIdPattern</code></td>
-                            <td style="padding: 0.5rem;">URLから作品を一意識別するIDを抽出する正規表現。</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
-                            <td style="padding: 0.5rem;"><code>episodeNumberPattern</code></td>
-                            <td style="padding: 0.5rem;">URLから話数を抽出する正規表現。</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <h4>1. サイト識別とマッチング</h4>
+            <table>
+                <thead><tr><th>項目</th><th>説明</th></tr></thead>
+                <tbody>
+                    <tr><td><code>workIdPattern</code></td><td>URLから作品IDを抽出する正規表現。</td></tr>
+                    <tr><td><code>episodeNumberPattern</code></td><td>URLから話数を抽出する正規表現。</td></tr>
+                </tbody>
+            </table>
 
-            <h4 style="margin-top: 1.5rem;">2. 目次(ToC)の解析</h4>
-            <div style="overflow-x: auto; margin-top: 1rem;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-                    <thead>
-                        <tr style="border-bottom: 1px solid var(--accent-color);">
-                            <th style="text-align: left; padding: 0.5rem;">項目</th>
-                            <th style="text-align: left; padding: 0.5rem;">説明</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
-                            <td style="padding: 0.5rem;"><code>tocEpisodeRowSelector</code></td>
-                            <td style="padding: 0.5rem;">目次の一行分（リスト要素など）を指すCSSセレクタ。</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
-                            <td style="padding: 0.5rem;"><code>tocEpisodeTitleSelector</code></td>
-                            <td style="padding: 0.5rem;">エピソード題名を取得するセレクタ。</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
-                            <td style="padding: 0.5rem;"><code>tocEpisodeHrefSelector</code></td>
-                            <td style="padding: 0.5rem;">エピソードへのリンクを取得するセレクタ。</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <h4>2. 目次(ToC)の解析</h4>
+            <table>
+                <thead><tr><th>項目</th><th>説明</th></tr></thead>
+                <tbody>
+                    <tr><td><code>tocEpisodeRowSelector</code></td><td>目次の一行分（リスト要素など）を指すCSSセレクタ。</td></tr>
+                    <tr><td><code>tocEpisodeTitleSelector</code></td><td>エピソード題名を取得するセレクタ。</td></tr>
+                    <tr><td><code>tocEpisodeHrefSelector</code></td><td>リンクを取得するセレクタ。</td></tr>
+                </tbody>
+            </table>
 
-            <h4 style="margin-top: 1.5rem;">3. 本文の抽出</h4>
-            <div style="overflow-x: auto; margin-top: 1rem;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-                    <thead>
-                        <tr style="border-bottom: 1px solid var(--accent-color);">
-                            <th style="text-align: left; padding: 0.5rem;">項目</th>
-                            <th style="text-align: left; padding: 0.5rem;">説明</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
-                            <td style="padding: 0.5rem;"><code>episodeBodySelector</code></td>
-                            <td style="padding: 0.5rem;"><strong>最重要。</strong> 本文が含まれるメインコンテナのセレクタ。</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
-                            <td style="padding: 0.5rem;"><code>episodeTitleSelector</code></td>
-                            <td style="padding: 0.5rem;">話のタイトルを指定するセレクタ。</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <h4>3. 本文の抽出</h4>
+            <table>
+                <thead><tr><th>項目</th><th>説明</th></tr></thead>
+                <tbody>
+                    <tr><td><code>episodeBodySelector</code></td><td><strong>重要。</strong> 本文が含まれるコンテナのセレクタ。</td></tr>
+                    <tr><td><code>episodeTitleSelector</code></td><td>話のタイトルのセレクタ。</td></tr>
+                </tbody>
+            </table>
 
-            <h4 style="margin-top: 1.5rem;">4. クレンジング設定</h4>
-            <div style="overflow-x: auto; margin-top: 1rem;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-                    <thead>
-                        <tr style="border-bottom: 1px solid var(--accent-color);">
-                            <th style="text-align: left; padding: 0.5rem;">項目</th>
-                            <th style="text-align: left; padding: 0.5rem;">説明</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
-                            <td style="padding: 0.5rem;"><code>removeSelectors</code></td>
-                            <td style="padding: 0.5rem;">削除する要素（広告、スクリプト、SNSボタンなど）。</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
-                            <td style="padding: 0.5rem;"><code>preserveSelectors</code></td>
-                            <td style="padding: 0.5rem;"><strong>保護するタグ。</strong> 通常は <code>["ruby", "rt", "img"]</code> を指定。</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <h4>4. クレンジング設定</h4>
+            <table>
+                <thead><tr><th>項目</th><th>説明</th></tr></thead>
+                <tbody>
+                    <tr><td><code>removeSelectors</code></td><td>削除する要素（広告、SNSボタンなど）。</td></tr>
+                    <tr><td><code>preserveSelectors</code></td><td><strong>保護するタグ。</strong> <code>["ruby", "rt", "img"]</code> を推奨。</td></tr>
+                </tbody>
+            </table>
 
-            <h3 style="margin-top: 2rem; border-bottom: 2px solid var(--accent-color); display: inline-block;">実装サンプル（架空サイト：ノベル・ラボ）</h3>
+            <h3 style="border-bottom: 2px solid var(--accent-color); display: inline-block;">実装サンプル（架空サイト：ノベル・ラボ）</h3>
             <pre style="background: var(--bg-color); padding: 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; border: 1px solid rgba(128,128,128,0.1); margin: 1.5rem 0;">
 {
   "displayName": "ノベル・ラボ（拡張）",
   "mode": "extendedReader",
   "isEnabled": true,
-  
-  // URL定義
   "workIdPattern": "novel-labo\\.com/v/([a-z0-9]+)",
   "episodeNumberPattern": "novel-labo\\.com/v/.+/chapter/(\\d+)",
-  
-  // 目次解析
-  "tocEpisodeRowSelector": ".toc-row",
-  "tocEpisodeTitleSelector": ".toc-row a",
-  "tocEpisodeHrefSelector": ".toc-row a",
-  
-  // 本文抽出
-  "episodeTitleSelector": ".chapter-header h1",
   "episodeBodySelector": "article#novel-text",
-  
-  // クリーニング
-  "removeSelectors": ["script", ".social-buttons", "aside"],
   "preserveSelectors": ["ruby", "rt", "img"]
 }</pre>
 
-            <h3 style="margin-top: 2rem; border-bottom: 2px solid var(--accent-color); display: inline-block;">AIを活用した効率的な作成</h3>
-            <p style="margin-top: 1rem;">CSSセレクタの特定やJSONの記述が難しい場合は、ChatGPTやClaudeなどのAIを活用するのが非常に効果的です。対象サイトのHTMLソースの一部をAIに読み込ませ、以下のプロンプトを参考に指示を出してみてください。</p>
+            <h3 style="border-bottom: 2px solid var(--accent-color); display: inline-block;">AIを活用した効率的な作成</h3>
+            <p>AI（ChatGPTやClaude等）を活用すれば、HTMLを読み込ませるだけでプロファイルを作成できます。以下のプロンプトをコピーして活用してください。</p>
             
-            <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--accent-color);">
-                <strong>おすすめのプロンプト例：</strong><br>
-                <code style="display: block; margin-top: 1rem; white-space: pre-wrap; font-size: 0.9rem; opacity: 0.9;">あなたはCSSセレクタとJSONの専門家です。小説リーダーアプリ『FluxNovels』の拡張プロファイルを作成する手伝いをしてください。
+            <div style="background: var(--bg-color); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--accent-color); border: 1px solid rgba(128,128,128,0.1);">
+                <strong>AIへの指示（プロンプト）の例：</strong><br>
+                <code style="display: block; margin-top: 1rem; white-space: pre-wrap; font-size: 0.85rem; opacity: 0.9;">あなたはCSSセレクタの専門家です。小説リーダーアプリ『FluxNovels』の拡張プロファイルを作成してください。
 
-以下に解析したい小説サイトのHTML構造を貼り付けます。
-このHTMLから、「作品タイトル」「本文コンテナ」「目次リスト」を特定し、以下のJSONフォーマットを埋めて出力してください。
+以下の【ターゲットHTML】を解析し、後述の【出力フォーマット】の各空欄を埋めて出力してください。
 
-【出力条件】
-- 本文抽出には ID や Class 名を優先してください
-- 広告や不要なナビゲーションは removeSelectors に含めてください
-- 出力は JSON コードブロックのみにしてください
+【出力フォーマット】
+{
+  "displayName": "サイト名",
+  "mode": "extendedReader",
+  "workIdPattern": "作品ID抽出の正規表現",
+  "episodeNumberPattern": "話数抽出の正規表現",
+  "episodeTitleSelector": "タイトルセレクタ",
+  "episodeBodySelector": "本文セレクタ",
+  "removeSelectors": ["広告等の削除要素"],
+  "preserveSelectors": ["ruby", "rt", "img"]
+}
 
 【ターゲットHTML】
-[ここにブラウザでコピーしたHTMLを貼り付け]</code>
+[ここにHTMLを貼り付け]</code>
+            </div>
+
+            <div style="background: rgba(201, 160, 99, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--accent-color); font-size: 0.9rem; margin-top: 2rem;">
+                <strong>⚠️ プロファイル共有に関するガイドライン</strong>
+                <ul style="margin-top: 0.5rem; margin-left: 1.2rem;">
+                    <li>自作のプロファイルを共有する際は、対象サイトの利用規約を遵守してください。</li>
+                    <li>外部ツールやスクレイピングを禁止しているサイトでの利用・共有は控えてください。</li>
+                    <li>共有されたプロファイルの使用は自己責任でお願いします。開発者は一切の責任を負いません。</li>
+                </ul>
             </div>
 
             <div style="margin-top: 2.5rem; text-align: center;">
-                <p style="margin-bottom: 1.5rem; opacity: 0.8;">自作のプロファイルを共有したり、作成の相談をしたりするためのコミュニティ（GitHub Discussions）を用意しています。</p>
-                <a href="https://github.com/n-kase/FluxNovels-Docs/discussions" target="_blank" style="display: inline-block; padding: 1rem 2.5rem; background: var(--accent-color); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: var(--transition); box-shadow: 0 10px 20px rgba(201, 160, 99, 0.2);">コミュニティで共有・相談する</a>
+                <p style="margin-bottom: 1.5rem; opacity: 0.8;">プロファイルの共有や相談はコミュニティ（GitHub Discussions）へ。</p>
+                <a href="https://github.com/n-kase/FluxNovels-Docs/discussions" target="_blank" style="display: inline-block; padding: 1rem 2.5rem; background: var(--accent-color); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: var(--transition); box-shadow: 0 10px 20px rgba(201, 160, 99, 0.2);">コミュニティへ参加する</a>
             </div>
         </div>
     </section>
@@ -436,29 +363,18 @@
         <h2 class="section-title">プライバシーポリシー</h2>
         <div class="privacy-box">
             <p>FluxNovels（以下「本アプリ」）は、ユーザーのプライバシーを最優先事項として設計されています。</p>
-
             <h3>1. 個人情報の収集について</h3>
-            <p>本アプリは、ユーザー名、メールアドレス、電話番号などの個人情報を収集することはありません。アカウント作成も不要です。</p>
-
+            <p>本アプリは、個人情報（氏名、メールアドレス等）を収集することはありません。</p>
             <h3>2. データの保存と同期</h3>
-            <p>ライブラリや読書位置などのデータは、Appleが提供するiCloud（CloudKit）を利用して保存・同期されます。開発者がこれらのデータに直接アクセスしたり、外部サーバーに送信したりすることはありません。
-            </p>
-
-            <h3>3. アクセス解析・広告</h3>
-            <p>本アプリは、サードパーティによる広告表示や行動追跡（トラッキング）を行いません。アプリの品質向上のため、Appleが提供する標準的なクラッシュレポート（匿名）を利用する場合があります。</p>
-
-            <h3>4. お問い合わせ</h3>
-            <p>プライバシーに関するご質問は、以下のメールアドレスまでお問い合わせください。<br>
-                <strong>support@cecily.jp</strong>
-            </p>
+            <p>データはAppleのiCloud（CloudKit）に保存され、開発者がアクセスすることはありません。</p>
+            <h3>3. お問い合わせ</h3>
+            <p><strong>support@cecily.jp</strong></p>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2026 FluxNovels. All Rights Reserved.</p>
-        <p>Developed with passion for Japanese literature.</p>
     </footer>
 
 </body>
-
 </html>
