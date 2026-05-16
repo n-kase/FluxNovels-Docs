@@ -287,35 +287,142 @@
         <div class="privacy-box">
             <p>FluxNovelsは、独自の「拡張プロファイル」を作成することで、標準で対応していないサイトも美しい縦書きで読み込むことが可能です。これは、サイトの構造をアプリに教えるための「設計図」です。</p>
             
-            <h3>作成の基本構成</h3>
-            <ul>
-                <li><strong>識別 (Patterns):</strong> どのURLに対して適用するかを正規表現で定義します。</li>
-                <li><strong>抽出 (Selectors):</strong> タイトル、本文、まえがき、あとがきのCSSセレクタを指定します。</li>
-                <li><strong>クリーニング (Cleanup):</strong> 広告や不要なナビゲーションを排除し、ルビや画像を保護します。</li>
-            </ul>
+            <h3 style="margin-top: 2rem; border-bottom: 2px solid var(--accent-color); display: inline-block;">詳細仕様リファレンス</h3>
+            
+            <h4 style="margin-top: 1.5rem;">1. サイト識別とマッチング</h4>
+            <div style="overflow-x: auto; margin-top: 1rem;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--accent-color);">
+                            <th style="text-align: left; padding: 0.5rem;">項目</th>
+                            <th style="text-align: left; padding: 0.5rem;">説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
+                            <td style="padding: 0.5rem;"><code>workIdPattern</code></td>
+                            <td style="padding: 0.5rem;">URLから作品を一意識別するIDを抽出する正規表現。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
+                            <td style="padding: 0.5rem;"><code>episodeNumberPattern</code></td>
+                            <td style="padding: 0.5rem;">URLから話数を抽出する正規表現。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <h3>JSONサンプル</h3>
+            <h4 style="margin-top: 1.5rem;">2. 目次(ToC)の解析</h4>
+            <div style="overflow-x: auto; margin-top: 1rem;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--accent-color);">
+                            <th style="text-align: left; padding: 0.5rem;">項目</th>
+                            <th style="text-align: left; padding: 0.5rem;">説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
+                            <td style="padding: 0.5rem;"><code>tocEpisodeRowSelector</code></td>
+                            <td style="padding: 0.5rem;">目次の一行分（リスト要素など）を指すCSSセレクタ。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
+                            <td style="padding: 0.5rem;"><code>tocEpisodeTitleSelector</code></td>
+                            <td style="padding: 0.5rem;">エピソード題名を取得するセレクタ。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
+                            <td style="padding: 0.5rem;"><code>tocEpisodeHrefSelector</code></td>
+                            <td style="padding: 0.5rem;">エピソードへのリンクを取得するセレクタ。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 style="margin-top: 1.5rem;">3. 本文の抽出</h4>
+            <div style="overflow-x: auto; margin-top: 1rem;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--accent-color);">
+                            <th style="text-align: left; padding: 0.5rem;">項目</th>
+                            <th style="text-align: left; padding: 0.5rem;">説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
+                            <td style="padding: 0.5rem;"><code>episodeBodySelector</code></td>
+                            <td style="padding: 0.5rem;"><strong>最重要。</strong> 本文が含まれるメインコンテナのセレクタ。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
+                            <td style="padding: 0.5rem;"><code>episodeTitleSelector</code></td>
+                            <td style="padding: 0.5rem;">話のタイトルを指定するセレクタ。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 style="margin-top: 1.5rem;">4. クレンジング設定</h4>
+            <div style="overflow-x: auto; margin-top: 1rem;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--accent-color);">
+                            <th style="text-align: left; padding: 0.5rem;">項目</th>
+                            <th style="text-align: left; padding: 0.5rem;">説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
+                            <td style="padding: 0.5rem;"><code>removeSelectors</code></td>
+                            <td style="padding: 0.5rem;">削除する要素（広告、スクリプト、SNSボタンなど）。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(128,128,128,0.1);">
+                            <td style="padding: 0.5rem;"><code>preserveSelectors</code></td>
+                            <td style="padding: 0.5rem;"><strong>保護するタグ。</strong> 通常は <code>["ruby", "rt", "img"]</code> を指定。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top: 2rem; border-bottom: 2px solid var(--accent-color); display: inline-block;">実装サンプル（架空サイト：ノベル・ラボ）</h3>
             <pre style="background: var(--bg-color); padding: 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; border: 1px solid rgba(128,128,128,0.1); margin: 1.5rem 0;">
 {
-  "displayName": "カスタムサイト設定",
+  "displayName": "ノベル・ラボ（拡張）",
   "mode": "extendedReader",
-  "workIdPattern": "example.com/novel/([0-9]+)",
-  "episodeBodySelector": "#novel-content",
-  "preserveSelectors": ["ruby", "rt", "img"],
-  "removeSelectors": [".ad-banner", "script"]
+  "isEnabled": true,
+  
+  // URL定義
+  "workIdPattern": "novel-labo\\.com/v/([a-z0-9]+)",
+  "episodeNumberPattern": "novel-labo\\.com/v/.+/chapter/(\\d+)",
+  
+  // 目次解析
+  "tocEpisodeRowSelector": ".toc-row",
+  "tocEpisodeTitleSelector": ".toc-row a",
+  "tocEpisodeHrefSelector": ".toc-row a",
+  
+  // 本文抽出
+  "episodeTitleSelector": ".chapter-header h1",
+  "episodeBodySelector": "article#novel-text",
+  
+  // クリーニング
+  "removeSelectors": ["script", ".social-buttons", "aside"],
+  "preserveSelectors": ["ruby", "rt", "img"]
 }</pre>
 
-            <h3>主な設定項目</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-                <div style="background: var(--bg-color); padding: 1rem; border-radius: 12px; border: 1px solid rgba(128,128,128,0.1);">
-                    <strong>workIdPattern</strong><br><small>URLから作品IDを抽出する正規表現。</small>
-                </div>
-                <div style="background: var(--bg-color); padding: 1rem; border-radius: 12px; border: 1px solid rgba(128,128,128,0.1);">
-                    <strong>episodeBodySelector</strong><br><small>本文が含まれるコンテナのCSSセレクタ。</small>
-                </div>
-                <div style="background: var(--bg-color); padding: 1rem; border-radius: 12px; border: 1px solid rgba(128,128,128,0.1);">
-                    <strong>preserveSelectors</strong><br><small>削除せずに残すべきタグ（ruby等）。</small>
-                </div>
+            <h3 style="margin-top: 2rem; border-bottom: 2px solid var(--accent-color); display: inline-block;">AIを活用した効率的な作成</h3>
+            <p style="margin-top: 1rem;">CSSセレクタの特定やJSONの記述が難しい場合は、ChatGPTやClaudeなどのAIを活用するのが非常に効果的です。対象サイトのHTMLソースの一部をAIに読み込ませ、以下のプロンプトを参考に指示を出してみてください。</p>
+            
+            <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--accent-color);">
+                <strong>おすすめのプロンプト例：</strong><br>
+                <code style="display: block; margin-top: 1rem; white-space: pre-wrap; font-size: 0.9rem; opacity: 0.9;">あなたはCSSセレクタとJSONの専門家です。小説リーダーアプリ『FluxNovels』の拡張プロファイルを作成する手伝いをしてください。
+
+以下に解析したい小説サイトのHTML構造を貼り付けます。
+このHTMLから、「作品タイトル」「本文コンテナ」「目次リスト」を特定し、以下のJSONフォーマットを埋めて出力してください。
+
+【出力条件】
+- 本文抽出には ID や Class 名を優先してください
+- 広告や不要なナビゲーションは removeSelectors に含めてください
+- 出力は JSON コードブロックのみにしてください
+
+【ターゲットHTML】
+[ここにブラウザでコピーしたHTMLを貼り付け]</code>
             </div>
 
             <div style="margin-top: 2.5rem; text-align: center;">
