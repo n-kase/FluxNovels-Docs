@@ -235,6 +235,7 @@
         <div class="nav-links">
             <a href="#features">特長</a>
             <a href="#faq">FAQ</a>
+            <a href="#extended-profiles">拡張プロファイル</a>
             <a href="#privacy">プライバシーポリシー</a>
             <a href="mailto:support@cecily.jp">サポート窓口</a>
         </div>
@@ -278,6 +279,45 @@
         <div class="faq-item">
             <span class="faq-question">オフラインでも読めますか？</span>
             <p class="faq-answer">一度読み込んだエピソードはキャッシュされますが、永続的なオフライン保存機能については今後のアップデートで拡張予定です。</p>
+        </div>
+    </section>
+    <section id="extended-profiles">
+        <h2 class="section-title">高度な設定：拡張プロファイル</h2>
+        <div class="privacy-box">
+            <p>FluxNovelsは、独自の「拡張プロファイル」を作成することで、標準で対応していないサイトも美しい縦書きで読み込むことが可能です。これは、サイトの構造をアプリに教えるための「設計図」です。</p>
+            
+            <h3>作成の基本構成</h3>
+            <ul>
+                <li><strong>識別 (Patterns):</strong> どのURLに対して適用するかを正規表現で定義します。</li>
+                <li><strong>抽出 (Selectors):</strong> タイトル、本文、まえがき、あとがきのCSSセレクタを指定します。</li>
+                <li><strong>クリーニング (Cleanup):</strong> 広告や不要なナビゲーションを排除し、ルビや画像を保護します。</li>
+            </ul>
+
+            <h3>JSONサンプル</h3>
+            <pre style="background: var(--bg-color); padding: 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; border: 1px solid rgba(128,128,128,0.1); margin: 1.5rem 0;">
+{
+  "displayName": "カスタムサイト設定",
+  "mode": "extendedReader",
+  "workIdPattern": "example.com/novel/([0-9]+)",
+  "episodeBodySelector": "#novel-content",
+  "preserveSelectors": ["ruby", "rt", "img"],
+  "removeSelectors": [".ad-banner", "script"]
+}</pre>
+
+            <h3>主な設定項目</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                <div style="background: var(--bg-color); padding: 1rem; border-radius: 12px; border: 1px solid rgba(128,128,128,0.1);">
+                    <strong>workIdPattern</strong><br><small>URLから作品IDを抽出する正規表現。</small>
+                </div>
+                <div style="background: var(--bg-color); padding: 1rem; border-radius: 12px; border: 1px solid rgba(128,128,128,0.1);">
+                    <strong>episodeBodySelector</strong><br><small>本文が含まれるコンテナのCSSセレクタ。</small>
+                </div>
+                <div style="background: var(--bg-color); padding: 1rem; border-radius: 12px; border: 1px solid rgba(128,128,128,0.1);">
+                    <strong>preserveSelectors</strong><br><small>削除せずに残すべきタグ（ruby等）。</small>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;">詳細な仕様や作成したプロファイルの共有については、コミュニティまたはサポート窓口までお問い合わせください。</p>
         </div>
     </section>
 
