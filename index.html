@@ -3,669 +3,476 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FluxNovels - 極上の読書体験を、あなたに</title>
-    <meta name="description" content="「小説家になろう」などの小説を美しく縦書きで読むためのiOSプレミアムリーダーアプリ「FluxNovels」の完全操作・機能マニュアルページです。">
-    
-    <!-- Google Fonts -->
+    <title>FluxNovels - サポート & プライバシーポリシー</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Serif+JP:wght@300;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;600&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         :root {
-            --bg-dark: #0D0D11;
-            --bg-card: rgba(26, 26, 36, 0.45);
-            --gold: #D4AF37;
-            --gold-gradient: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
-            --text-main: #F5F5F7;
-            --text-sub: #A1A1A6;
-            --glass-border: rgba(212, 175, 55, 0.15);
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-color: #ffffff;
+            --text-color: #1d1d1f;
+            --accent-color: #c9a063; /* Premium Gold */
+            --secondary-bg: #f5f5f7;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #000000;
+                --text-color: #f5f5f7;
+                --secondary-bg: #1d1d1f;
+                --glass-bg: rgba(0, 0, 0, 0.8);
+            }
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', 'Noto Serif JP', -apple-system, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.8;
-            overflow-x: hidden;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* 背景微粒子アニメーションの模倣 */
-        body::before {
-            content: '';
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* 共通コンテナ */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ヒーローセクション */
-        header {
-            padding: 120px 0 60px;
-            text-align: center;
-            position: relative;
-        }
-
-        .logo-area {
-            display: inline-block;
-            margin-bottom: 24px;
-            position: relative;
-        }
-
-        .logo-icon {
-            font-size: 3.5rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: pulse 3s infinite alternate;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(212,175,55,0.2)); }
-            100% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(212,175,55,0.5)); }
-        }
-
-        .app-name {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            margin-bottom: 12px;
-            background: linear-gradient(to right, #ffffff, #e0e0e0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .app-tagline {
-            font-size: 1.15rem;
-            color: var(--text-sub);
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 300;
-            letter-spacing: 0.05em;
-        }
-
-        /* クイックナビゲーション */
-        .quick-nav {
+            padding: 1.5rem 5%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
             display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin: 40px 0 80px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.1);
         }
 
-        .quick-nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 10px 24px;
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.03);
-            font-size: 0.9rem;
+        .logo {
+            font-size: 1.5rem;
             font-weight: 600;
-            backdrop-filter: blur(5px);
+            letter-spacing: -0.5px;
+            color: var(--accent-color);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin-left: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.7;
             transition: var(--transition);
         }
 
-        .quick-nav a:hover {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
         }
 
-        /* セクションタイトル */
-        .section-title {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 2.2rem;
+        /* Hero Section */
+        header {
+            padding: 120px 5% 60px;
             text-align: center;
-            margin-bottom: 48px;
-            letter-spacing: 0.08em;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
+            background: radial-gradient(circle at top right, rgba(201, 160, 99, 0.05), transparent);
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            width: 60px;
-            height: 2px;
-            background: var(--gold-gradient);
+        .hero-img {
+            max-width: 600px;
+            width: 100%;
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            margin: 3rem 0;
+            transition: var(--transition);
         }
 
-        .section-title i {
-            color: var(--gold);
-            font-size: 1.6rem;
+        .hero-img:hover {
+            transform: scale(1.02);
         }
 
-        /* ジェスチャー操作セクション */
-        .gestures-section {
-            margin-bottom: 100px;
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
         }
 
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--accent-color);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--secondary-bg);
+            padding: 2.5rem;
+            border-radius: 24px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .faq-answer {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* Privacy Policy & Specs Container */
+        .privacy-box {
+            background: var(--secondary-bg);
+            padding: 3rem;
+            border-radius: 24px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .privacy-box h3 { margin-top: 2rem; margin-bottom: 1rem; }
+        .privacy-box h4 { margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        .privacy-box p { margin-bottom: 1rem; }
+        .privacy-box ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+        th, td { padding: 0.8rem; border-bottom: 1px solid rgba(128,128,128,0.1); text-align: left; }
+        th { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(128, 128, 128, 0.1);
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            section { padding: 60px 5%; }
+            .privacy-box { padding: 1.5rem; }
+        }
+
+        /* Gestures Section */
         .gestures-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .gesture-card {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 40px 30px;
+            background: var(--secondary-bg);
+            padding: 2.5rem;
+            border-radius: 24px;
             text-align: center;
-            backdrop-filter: blur(15px);
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gesture-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gold-gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: var(--transition);
+            border: 1px solid rgba(128, 128, 128, 0.05);
         }
 
         .gesture-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.1);
-        }
-
-        .gesture-card:hover::before {
-            transform: scaleX(1);
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(201, 160, 99, 0.05);
         }
 
         .gesture-icon-wrapper {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 24px;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
             border-radius: 50%;
-            background: rgba(212, 175, 55, 0.08);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(201, 160, 99, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
         }
 
         .gesture-icon-wrapper i {
-            font-size: 2rem;
-            color: var(--gold);
-            transition: var(--transition);
+            font-size: 1.8rem;
+            color: var(--accent-color);
         }
-
-        .gesture-card:hover .gesture-icon-wrapper i {
-            transform: scale(1.15) rotate(5deg);
-        }
-
-        /* アニメーションインジケータ（矢印など） */
-        .arrow-up { animation: float-up 2s infinite ease-in-out; }
-        .arrow-down { animation: float-down 2s infinite ease-in-out; }
-        .arrow-left { animation: float-left 2s infinite ease-in-out; }
-        .arrow-right { animation: float-right 2s infinite ease-in-out; }
-
-        @keyframes float-up { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        @keyframes float-down { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
-        @keyframes float-left { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-8px); } }
-        @keyframes float-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
 
         .gesture-card h3 {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.4rem;
-            margin-bottom: 16px;
-            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
         }
 
         .gesture-card p {
-            color: var(--text-sub);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
         .gesture-badge {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 0.4rem 1.2rem;
+            background: rgba(201, 160, 99, 0.1);
+            color: var(--accent-color);
+            border-radius: 50px;
             font-size: 0.8rem;
-            color: var(--gold);
             font-weight: 600;
-        }
-
-        /* 主要機能セクション */
-        .features-section {
-            padding: 80px 0;
-            background: rgba(255, 255, 255, 0.01);
-            border-radius: 40px;
-            margin-bottom: 100px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            padding: 0 20px;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 20px;
-            transition: var(--transition);
-        }
-
-        .feature-item:hover {
-            transform: translateX(5px);
-        }
-
-        .feature-icon {
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-top: 4px;
-            flex-shrink: 0;
-        }
-
-        .feature-content h4 {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-            letter-spacing: 0.03em;
-        }
-
-        .feature-content p {
-            color: var(--text-sub);
-            font-size: 0.95rem;
-        }
-
-        /* 縦書き体験と見開き演出の特設セクション */
-        .premium-experience {
-            margin-bottom: 100px;
-            display: flex;
-            gap: 50px;
-            align-items: center;
-            flex-wrap: wrap;
-            background: linear-gradient(135deg, rgba(26, 26, 36, 0.3) 0%, rgba(13, 13, 17, 0.8) 100%);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 50px;
-            position: relative;
-        }
-
-        .premium-text {
-            flex: 1 1 500px;
-        }
-
-        .premium-text h3 {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            letter-spacing: 0.05em;
-        }
-
-        .premium-text p {
-            color: var(--text-sub);
-            font-size: 1rem;
-            margin-bottom: 24px;
-        }
-
-        .premium-visual {
-            flex: 1 1 400px;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        /* 本の鏡像見開き風のCSSアートワーク */
-        .book-mockup {
-            width: 320px;
-            height: 220px;
-            perspective: 1200px;
-            display: flex;
-            position: relative;
-        }
-
-        .book-page {
-            width: 50%;
-            height: 100%;
-            background: #fdfaf2;
-            color: #2c251e;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            padding: 15px;
-            font-family: 'Noto Serif JP', serif;
-            font-size: 0.65rem;
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            line-height: 1.6;
-            letter-spacing: 0.1em;
-            position: relative;
-        }
-
-        .page-left {
-            border-radius: 10px 0 0 10px;
-            border-right: 1px solid rgba(0, 0, 0, 0.15);
-            background: linear-gradient(to right, #eae5da 0%, #fdfaf2 10%);
-        }
-
-        .page-right {
-            border-radius: 0 10px 10px 0;
-            border-left: 1px solid rgba(0, 0, 0, 0.15);
-            background: linear-gradient(to left, #eae5da 0%, #fdfaf2 10%);
-            transform-origin: left center;
-            animation: flip 6s infinite ease-in-out;
-            backface-visibility: visible;
-            transform-style: preserve-3d;
-        }
-
-        .page-right-back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(253, 250, 242, 0.7);
-            border-radius: 0 10px 10px 0;
-            transform: rotateY(180deg);
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* 反転・鏡像演出のシミュレート */
-            filter: blur(0.5px);
-            opacity: 0.65;
-        }
-
-        @keyframes flip {
-            0%, 100% { transform: rotateY(0deg); }
-            50% { transform: rotateY(-140deg); }
-        }
-
-        /* 拡張プロファイルセクション */
-        .profile-section {
-            margin-bottom: 120px;
-        }
-
-        .profile-box {
-            background: rgba(212, 175, 55, 0.03);
-            border: 1px dashed var(--gold);
-            border-radius: 24px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .profile-box-icon {
-            font-size: 3.5rem;
-            color: var(--gold);
-            flex-shrink: 0;
-        }
-
-        .profile-box-text {
-            flex: 1 1 600px;
-        }
-
-        .profile-box-text h3 {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.6rem;
-            margin-bottom: 12px;
-        }
-
-        .profile-box-text p {
-            color: var(--text-sub);
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-        }
-
-        /* フッター */
-        footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 60px 0 40px;
-            text-align: center;
-            background: rgba(13, 13, 17, 0.95);
-        }
-
-        .footer-logo {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 16px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-text {
-            color: var(--text-sub);
-            font-size: 0.85rem;
-            max-width: 600px;
-            margin: 0 auto 24px;
-        }
-
-        .footer-copyright {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.2);
-            letter-spacing: 0.05em;
-        }
-
-        /* モバイル対応の微調整 */
-        @media (max-width: 768px) {
-            header { padding: 80px 0 40px; }
-            .app-name { font-size: 2.2rem; }
-            .section-title { font-size: 1.8rem; }
-            .premium-experience { padding: 30px; }
-            .book-mockup { width: 280px; height: 190px; }
-            .profile-box { padding: 30px; text-align: center; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ヒーローヘッダー -->
-    <header>
-        <div class="container">
-            <div class="logo-area">
-                <i class="fa-solid fa-book-open-reader logo-icon"></i>
-            </div>
-            <h1 class="app-name">FluxNovels</h1>
-            <p class="app-tagline">日本の小説を、最も美しく読むために。極上の縦書きと、心地よい紙のページめくり体験を提供するプレミアムリーダーアプリ。</p>
-            
-            <div class="quick-nav">
-                <a href="#gestures"><i class="fa-solid fa-hand-pointer"></i> ジェスチャー操作</a>
-                <a href="#features"><i class="fa-solid fa-star"></i> アプリの特徴</a>
-                <a href="#premium"><i class="fa-solid fa-feather-pointed"></i> 紙のめくり演出</a>
-                <a href="#profiles"><i class="fa-solid fa-wand-magic-sparkles"></i> 拡張プロファイル</a>
-            </div>
+    <nav>
+        <div class="logo">FluxNovels</div>
+        <div class="nav-links">
+            <a href="#features">特長</a>
+            <a href="#gestures">ジェスチャー</a>
+            <a href="#faq">FAQ</a>
+            <a href="#extended-profiles">拡張プロファイル</a>
+            <a href="https://github.com/n-kase/FluxNovels-Docs/discussions" target="_blank">コミュニティ</a>
+            <a href="#privacy">プライバシーポリシー</a>
+            <a href="mailto:support@cecily.jp">サポート窓口</a>
         </div>
+    </nav>
+
+    <header>
+        <h1 class="hero-title">物語を、<br><span class="serif">美しく読む。</span></h1>
+        <p class="hero-subtitle">FluxNovelsは、日本の小説を最も贅沢に楽しむための、縦書き専用プレミアム・リーダーです。</p>
+        <img src="hero.png" alt="FluxNovels App UI" class="hero-img">
     </header>
 
-    <div class="container">
-
-        <!-- ジェスチャー操作セクション -->
-        <section id="gestures" class="gestures-section">
-            <h2 class="section-title"><i class="fa-solid fa-hand-pointer"></i> 画面内の直感ジェスチャー操作</h2>
-            <div class="gestures-grid">
-                
-                <!-- スワイプダウン -->
-                <div class="gesture-card">
-                    <div class="gesture-icon-wrapper">
-                        <i class="fa-solid fa-arrow-down arrow-down"></i>
-                    </div>
-                    <h3>スワイプダウン</h3>
-                    <p>拡張リーダー画面で画面を「下」に引き下げると、設定パネルが優雅にシート表示されます。フォント、文字サイズ、行間、背景テーマなどを一瞬でカスタマイズ可能です。</p>
-                    <span class="gesture-badge"><i class="fa-solid fa-gear"></i> 設定画面を起動</span>
-                </div>
-
-                <!-- スワイプアップ -->
-                <div class="gesture-card">
-                    <div class="gesture-icon-wrapper">
-                        <i class="fa-solid fa-arrow-up arrow-up"></i>
-                    </div>
-                    <h3>スワイプアップ</h3>
-                    <p>画面を「上」に引き上げると、目次（Table of Contents）パネルが表示されます。他のエピソードへ素早く切り替えたり、現在の読み進め状況を俯瞰したりできます。</p>
-                    <span class="gesture-badge"><i class="fa-solid fa-list"></i> 目次画面を起動</span>
-                </div>
-
-                <!-- タップ操作（左右） -->
-                <div class="gesture-card">
-                    <div class="gesture-icon-wrapper">
-                        <i class="fa-solid fa-arrows-left-right"></i>
-                    </div>
-                    <h3>画面端タップ</h3>
-                    <p>縦書き（RTL）小説に合わせ、画面の【左側タップ】で次のページへ進み、【右側タップ】で前のページに戻ります。読書のリズムを崩さない極小のレスポンスです。</p>
-                    <span class="gesture-badge"><i class="fa-solid fa-circle-arrow-left"></i> 左：進む / 右：戻る</span>
-                </div>
-
+    <section id="features">
+        <h2 class="section-title">究極の読書体験</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>縦書きへの偏愛</h3>
+                <p>日本語が最も美しく映える「縦書き」に特化。独自のレンダリングエンジンにより、ウェブ小説を洗練された一冊の本へと昇華させます。</p>
             </div>
-        </section>
-
-        <!-- 特設：紙のめくり演出セクション -->
-        <section id="premium" class="premium-experience">
-            <div class="premium-text">
-                <h3><i class="fa-solid fa-layer-group" style="color: var(--gold);"></i> 徹底的な「紙の質感」と見開き（Double-sided）演出</h3>
-                <p>FluxNovelsの最大のこだわりは、画面の向こう側に本物の本が存在しているかのような錯覚をもたらす「ページカールアニメーション」です。</p>
-                <p>iOSのネイティブUIを活かした自然なカール挙動に加え、ページをめくる最中の裏側（背面）に、<strong>現在のページの鏡像（左右反転・半透明・極微なブラー）を透けて表示させる鏡像演出（Double-sided）</strong>を実装しています。</p>
-                <p>これにより、まるで紙の小説の裏側がインクで少し透けて見えているかのような、他にはない極めてリアルでプレミアムな質感を味わうことができます。</p>
+            <div class="feature-card">
+                <h3>紙の質感を指先に</h3>
+                <p>ページをめくる裏側まで再現する「ダブルサイド演出」。デジタルでありながら、本物の紙を手繰るような高揚感を届けます。</p>
             </div>
-            <div class="premium-visual">
-                <div class="book-mockup">
-                    <div class="book-page page-left">
-                        これは、美しく縦書きで読むための、こだわり抜かれた小説リーダーアプリの体験です。
-                    </div>
-                    <div class="book-page page-right">
-                        ページをめくる際の裏側には、本物の本と同じく鏡像が半透明で表示されます。
-                        <div class="page-right-back">
-                            ります。表像が表示さ
-                        </div>
-                    </div>
-                </div>
+            <div class="feature-card">
+                <h3>すべてを同期</h3>
+                <p>SwiftDataとCloudKitにより、あなたのライブラリと読書位置はすべてのAppleデバイス間で完璧に同期されます。</p>
             </div>
-        </section>
-
-        <!-- 主要機能セクション -->
-        <section id="features" class="features-section">
-            <h2 class="section-title"><i class="fa-solid fa-star"></i> 全機能一覧</h2>
-            <div class="features-grid">
-                
-                <!-- 縦書きレンダリング -->
-                <div class="feature-item">
-                    <i class="fa-solid fa-pen-nib feature-icon"></i>
-                    <div class="feature-content">
-                        <h4>縦書き（Tate-gaki）ファースト</h4>
-                        <p>WebKitのレンダリングパワーを活用し、日本語小説に最も馴染む「右から左へめくる縦書き」に完全特化。完璧に最適化されたルビ（ふりがな）や文字の配置で、流れるように読めます。</p>
-                    </div>
-                </div>
-
-                <!-- しおり自動同期 -->
-                <div class="feature-item">
-                    <i class="fa-solid fa-bookmark feature-icon"></i>
-                    <div class="feature-content">
-                        <h4>スマートしおり同期 (iCloud + SwiftData)</h4>
-                        <p>読水位置（しおり）は、エピソード内のピクセル・ミリ秒単位の精緻さで自動記録。SwiftDataとCloudKitを通じて、お使いのiPadやiPhoneなど、他のiOSデバイスと何もしなくても自動で安全に同期されます。</p>
-                    </div>
-                </div>
-
-                <!-- フォント・テーマ設定 -->
-                <div class="feature-item">
-                    <i class="fa-solid fa-sliders feature-icon"></i>
-                    <div class="feature-content">
-                        <h4>テーマ＆フォントの自由カスタマイズ</h4>
-                        <p>気品あふれる「明朝（Hiragino Mincho ProN）」と、視認性に優れた「ゴシック（Hiragino Sans）」の2種類からフォントを選択。テーマは目に優しい漆黒ダークモードと、本のような紙の質感を持つライトモードの2種類を用意しています。</p>
-                    </div>
-                </div>
-
-                <!-- 本棚キャッシュ -->
-                <div class="feature-item">
-                    <i class="fa-solid fa-cloud-arrow-down feature-icon"></i>
-                    <div class="feature-content">
-                        <h4>エピソードローカルキャッシュ</h4>
-                        <p>ライブラリ（本棚）に追加した小説は、エピソード本文をバックグラウンドでローカルに自動キャッシュ。電波の届かないオフライン環境や、通信量を節約したい外出先でもストレスなく快適に読み進められます。</p>
-                    </div>
-                </div>
-
-                <!-- お知らせ機能 -->
-                <div class="feature-item">
-                    <i class="fa-solid fa-bell feature-icon"></i>
-                    <div class="feature-content">
-                        <h4>最新アップデート通知</h4>
-                        <p>本棚に追加された小説の最新の更新状況や作者からのお知らせを、美しく整理された「Announcements」カードとして自動検知。ワンタップでそのエピソードへジャンプして読むことができます。</p>
-                    </div>
-                </div>
-
-                <!-- データベース管理 -->
-                <div class="feature-item">
-                    <i class="fa-solid fa-database feature-icon"></i>
-                    <div class="feature-content">
-                        <h4>高度なデータ管理とクリーンアップ</h4>
-                        <p>キャッシュデータや読水履歴を個別に削除してストレージを綺麗に維持できる「データ管理」機能を搭載。さらに、トラブル発生時にはすべてを初期化してアプリを完全にクリーンリスタートするファクトリーリセットもサポートしています。</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 拡張プロファイルセクション -->
-        <section id="profiles" class="profile-section">
-            <div class="profile-box">
-                <i class="fa-solid fa-wand-magic-sparkles profile-box-icon"></i>
-                <div class="profile-box-text">
-                    <h3>魔法のような「拡張リーダープロファイル」システム</h3>
-                    <p>FluxNovelsは、小説家になろう、カクヨム、アルファポリス、星空文庫の4大デフォルトサイトに対し、不要な広告、ヘッダー、フッターをインテリジェントに自動で剥ぎ取り、本文ルビと段落構造だけを美しく抽出するカスタムプロファイルを搭載しています。</p>
-                    <p>さらに、ユーザーが自作したカスタムサイト用プロファイルをインポート・エクスポートし、インターネット上のあらゆる小説を拡張縦書きリーダーへ自動コンバートする高度なシステムも完全装備。本物の本を読むように、Web小説を読むことができます。</p>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- フッター -->
-    <footer>
-        <div class="container">
-            <div class="footer-logo">
-                <i class="fa-solid fa-book-open-reader"></i> FluxNovels
-            </div>
-            <p class="footer-text">美しさと、本物のような紙の感触にこだわり抜いた、あなただけのプライベートな小説リーダー。私たちは「読むこと」を何よりも愛しています。</p>
-            <p class="footer-copyright">&copy; 2026 FluxNovels. All Rights Reserved. Created with Passion and Precision.</p>
         </div>
+    </section>
+
+    <section id="gestures">
+        <h2 class="section-title">直感的なジェスチャー操作</h2>
+        <div class="gestures-grid">
+            <!-- スワイプアップ -->
+            <div class="gesture-card">
+                <div class="gesture-icon-wrapper">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </div>
+                <h3>スワイプアップ（上スワイプ）</h3>
+                <p>リーダー画面で指を「上」へ動かすと、目次（Table of Contents）パネルが下部から優雅にスライドイン表示されます。別エピソードへの瞬時切り替えのほか、目次上部から「フォント・テーマ設定」を起動できます。</p>
+                <span class="gesture-badge"><i class="fa-solid fa-list"></i> 目次パネルを表示</span>
+            </div>
+
+            <!-- スワイプダウン -->
+            <div class="gesture-card">
+                <div class="gesture-icon-wrapper">
+                    <i class="fa-solid fa-arrow-down"></i>
+                </div>
+                <h3>スワイプダウン（下スワイプ）</h3>
+                <p>リーダー画面で指を「下」へ動かすと、読書をスマートに終了し、本棚（ライブラリ）や作品詳細画面へ瞬時に戻ることができます。スムーズに前画面に復帰可能です。</p>
+                <span class="gesture-badge"><i class="fa-solid fa-circle-xmark"></i> リーダーを閉じる</span>
+            </div>
+
+            <!-- 左右スワイプ -->
+            <div class="gesture-card">
+                <div class="gesture-icon-wrapper">
+                    <i class="fa-solid fa-arrows-left-right"></i>
+                </div>
+                <h3>左右スワイプ（ページ送り・戻し）</h3>
+                <p>日本語の美しい縦書き（RTL：右から左へめくる）仕様に完璧に合わせ、画面を【左へスワイプ】すると次のページへ進み、【右へスワイプ】すると前のページに戻ります。本物の紙をめくるような極上の操作感です。</p>
+                <span class="gesture-badge"><i class="fa-solid fa-arrows-left-right"></i> 左：送り / 右：戻し</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2 class="section-title">よくある質問</h2>
+        <div class="faq-item">
+            <span class="faq-question">縦書き表示にならないサイトがあります。</span>
+            <p class="faq-answer">本アプリの表示は「拡張プロファイル」の設定に依存します。表示が乱れる場合は、対象サイトのHTML構造に合わせてプロファイルを調整してください。なお、プロファイルを作成・適用する際は、対象サイトの利用規約を必ず確認し、コンテンツの改変や外部ビューアーでの閲覧が禁止されている環境において、規約に抵触するような設定の作成や適用は行わないでください。</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">データの同期がうまくいきません。</span>
+            <p class="faq-answer">iOSの「設定」> [ユーザー名] > iCloud で、iCloud DriveおよびFluxNovelsがオンになっていることをご確認ください。</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">オフラインでも読めますか？</span>
+            <p class="faq-answer">一度読み込んだエピソードはキャッシュされますが、永続的なオフライン保存機能については今後のアップデートで拡張予定です。</p>
+        </div>
+    </section>
+
+    <section id="extended-profiles">
+        <h2 class="section-title">高度な設定：拡張プロファイル</h2>
+        <div class="privacy-box">
+            <p>FluxNovelsは、独自の「拡張プロファイル」を作成することで、標準で対応していないサイトも美しい縦書きで読み込むことが可能です。</p>
+            
+            <h3 style="border-bottom: 2px solid var(--accent-color); display: inline-block;">詳細仕様リファレンス</h3>
+            
+            <h4>1. サイト識別とマッチング</h4>
+            <table>
+                <thead><tr><th>項目</th><th>説明</th></tr></thead>
+                <tbody>
+                    <tr><td><code>workIdPattern</code></td><td>URLから作品IDを抽出する正規表現。</td></tr>
+                    <tr><td><code>episodeNumberPattern</code></td><td>URLから話数を抽出する正規表現。</td></tr>
+                </tbody>
+            </table>
+
+            <h4>2. 目次(ToC)の解析</h4>
+            <table>
+                <thead><tr><th>項目</th><th>説明</th></tr></thead>
+                <tbody>
+                    <tr><td><code>tocEpisodeRowSelector</code></td><td>目次の一行分（リスト要素など）を指すCSSセレクタ。</td></tr>
+                    <tr><td><code>tocEpisodeTitleSelector</code></td><td>エピソード題名を取得するセレクタ。</td></tr>
+                    <tr><td><code>tocEpisodeHrefSelector</code></td><td>リンクを取得するセレクタ。</td></tr>
+                </tbody>
+            </table>
+
+            <h4>3. 本文の抽出</h4>
+            <table>
+                <thead><tr><th>項目</th><th>説明</th></tr></thead>
+                <tbody>
+                    <tr><td><code>episodeBodySelector</code></td><td><strong>重要。</strong> 本文が含まれるコンテナのセレクタ。</td></tr>
+                    <tr><td><code>episodeTitleSelector</code></td><td>話のタイトルのセレクタ。</td></tr>
+                </tbody>
+            </table>
+
+            <h4>4. クレンジング設定</h4>
+            <table>
+                <thead><tr><th>項目</th><th>説明</th></tr></thead>
+                <tbody>
+                    <tr><td><code>removeSelectors</code></td><td>削除する要素（広告、SNSボタンなど）。</td></tr>
+                    <tr><td><code>preserveSelectors</code></td><td><strong>保護するタグ。</strong> <code>["ruby", "rt", "img"]</code> を推奨。</td></tr>
+                </tbody>
+            </table>
+
+            <h3 style="border-bottom: 2px solid var(--accent-color); display: inline-block;">実装サンプル（架空サイト：ノベル・ラボ）</h3>
+            <pre style="background: var(--bg-color); padding: 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; border: 1px solid rgba(128,128,128,0.1); margin: 1.5rem 0;">
+{
+  "displayName": "ノベル・ラボ（拡張）",
+  "mode": "extendedReader",
+  "isEnabled": true,
+  "workIdPattern": "novel-labo\\.com/v/([a-z0-9]+)",
+  "episodeNumberPattern": "novel-labo\\.com/v/.+/chapter/(\\d+)",
+  "episodeBodySelector": "article#novel-text",
+  "preserveSelectors": ["ruby", "rt", "img"]
+}</pre>
+
+            <h3 style="border-bottom: 2px solid var(--accent-color); display: inline-block;">AIを活用した効率的な作成</h3>
+            <p>AI（ChatGPTやClaude等）を活用すれば、HTMLを読み込ませるだけでプロファイルを作成できます。以下のプロンプトをコピーして活用してください。</p>
+            
+            <div style="background: var(--bg-color); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--accent-color); border: 1px solid rgba(128,128,128,0.1);">
+                <strong>AIへの指示（プロンプト）の例：</strong><br>
+                <code style="display: block; margin-top: 1rem; white-space: pre-wrap; font-size: 0.85rem; opacity: 0.9;">あなたはCSSセレクタの専門家です。小説リーダーアプリ『FluxNovels』の拡張プロファイルを作成してください。
+
+以下の【ターゲットHTML】を解析し、後述の【出力フォーマット】の各空欄を埋めて出力してください。
+
+【出力フォーマット】
+{
+  "displayName": "サイト名",
+  "mode": "extendedReader",
+  "workIdPattern": "作品ID抽出の正規表現",
+  "episodeNumberPattern": "話数抽出の正規表現",
+  "episodeTitleSelector": "タイトルセレクタ",
+  "episodeBodySelector": "本文セレクタ",
+  "removeSelectors": ["広告等の削除要素"],
+  "preserveSelectors": ["ruby", "rt", "img"]
+}
+
+【ターゲットHTML】
+[ここにHTMLを貼り付け]</code>
+            </div>
+
+            <div style="background: rgba(201, 160, 99, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--accent-color); font-size: 0.9rem; margin-top: 2rem;">
+                <strong>⚠️ 拡張プロファイルの運用に関するガイドライン</strong>
+                <ul style="margin-top: 0.5rem; margin-left: 1.2rem;">
+                    <li>プロファイルを作成・適用する際は、対象サイトの利用規約を尊重してください。</li>
+                    <li>サイト側が意図しない形式でのデータ取得や、規約に抵触するような自動化・改変を目的としたプロファイルの利用および配布は固くお断りいたします。</li>
+                    <li>本機能はあくまで「個人の読書環境の最適化」を支援するためのツールです。プロファイルの適用結果に関する法的責任はすべてユーザー様に帰属します。</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 2.5rem; text-align: center;">
+                <p style="margin-bottom: 1.5rem; opacity: 0.8;">プロファイルの共有や相談はコミュニティ（GitHub Discussions）へ。</p>
+                <a href="https://github.com/n-kase/FluxNovels-Docs/discussions" target="_blank" style="display: inline-block; padding: 1rem 2.5rem; background: var(--accent-color); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: var(--transition); box-shadow: 0 10px 20px rgba(201, 160, 99, 0.2);">コミュニティへ参加する</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="privacy">
+        <h2 class="section-title">プライバシーポリシー</h2>
+        <div class="privacy-box">
+            <p>FluxNovels（以下「本アプリ」）は、ユーザーのプライバシーを最優先事項として設計されています。</p>
+            <h3>1. 個人情報の収集について</h3>
+            <p>本アプリは、個人情報（氏名、メールアドレス等）を収集することはありません。</p>
+            <h3>2. データの保存と同期</h3>
+            <p>データはAppleのiCloud（CloudKit）に保存され、開発者がアクセスすることはありません。</p>
+            <h3>3. お問い合わせ</h3>
+            <p><strong>support@cecily.jp</strong></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 FluxNovels. All Rights Reserved.</p>
     </footer>
 
 </body>
