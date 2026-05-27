@@ -349,7 +349,7 @@
         <h2 class="section-title">よくある質問</h2>
         <div class="faq-item">
             <span class="faq-question">縦書き表示にならないサイトがあります。</span>
-            <p class="faq-answer">本アプリの表示は「拡張プロファイル」の設定に依存します。表示が乱れる場合は、対象サイトのHTML構造に合わせてプロファイルを調整してください。なお、プロファイルを作成・適用する際は、対象サイトの利用規約を必ず確認し、コンテンツの改変や外部ビューアーでの閲覧が禁止されている環境において、規約に抵触するような設定の作成や適用は行わないでください。</p>
+            <p class="faq-answer">本アプリは、星空文庫などの一部の例外を除き、デフォルトでは公式Webサイトをそのまま表示する「ブラウザ読書モード」を提供しています。小説を縦書きリーダーで読むためには、ユーザー様ご自身の責任において「拡張プロファイル」を作成または適用していただく必要があります。プロファイルを作成・適用する際は、対象サイトの利用規約を必ず確認し、コンテンツの改変や外部ビューアーでの閲覧が禁止されている環境において、規約に抵触するような設定の作成や適用は行わないでください。</p>
         </div>
         <div class="faq-item">
             <span class="faq-question">データの同期がうまくいきません。</span>
@@ -357,14 +357,14 @@
         </div>
         <div class="faq-item">
             <span class="faq-question">オフラインでも読めますか？</span>
-            <p class="faq-answer">一度読み込んだエピソードはキャッシュされますが、永続的なオフライン保存機能については今後のアップデートで拡張予定です。</p>
+            <p class="faq-answer">一度読み込んだエピソードは端末にキャッシュされるため、オフラインでもお読みいただけます。さらに便利にお使いいただける一括ダウンロード機能等については、今後のアップデートで拡張を予定しています。</p>
         </div>
     </section>
 
     <section id="extended-profiles">
         <h2 class="section-title">高度な設定：拡張プロファイル</h2>
         <div class="privacy-box">
-            <p>FluxNovelsは、独自の「拡張プロファイル」を作成することで、標準で対応していないサイトも美しい縦書きで読み込むことが可能です。</p>
+            <p>FluxNovelsは、星空文庫などの一部の例外を除き、デフォルトでは公式Webビューによる「ブラウザ読書モード」を提供しています。ただし、独自の「拡張プロファイル」を作成することで、ユーザー様ご自身の判断と責任において、Web上の小説を美しい縦書きで読み込むことが可能になります。</p>
             
             <h3 style="border-bottom: 2px solid var(--accent-color); display: inline-block;">詳細仕様リファレンス</h3>
             
@@ -422,30 +422,79 @@
             
             <div style="background: var(--bg-color); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--accent-color); border: 1px solid rgba(128,128,128,0.1);">
                 <strong>AIへの指示（プロンプト）の例：</strong><br>
-                <code style="display: block; margin-top: 1rem; white-space: pre-wrap; font-size: 0.85rem; opacity: 0.9;">あなたはCSSセレクタの専門家です。小説リーダーアプリ『FluxNovels』の拡張プロファイルを作成してください。
+                <code style="display: block; margin-top: 1rem; white-space: pre-wrap; font-size: 0.85rem; opacity: 0.9;">あなたはCSSセレクタおよび正規表現の専門家です。小説リーダーアプリ『FluxNovels』の「拡張プロファイル（Extended Profile）」を作成してください。
 
-以下の【ターゲットHTML】を解析し、後述の【出力フォーマット】の各空欄を埋めて出力してください。
+以下の【ターゲット情報】（対象サイトのURL構造、目次ページのHTML、本文ページのHTML）を深く解析し、以下の【出力フォーマット】のすべてのパラメータを正確に埋めたクリーンなJSONを出力してください。プレースホルダーや推測による省略はせず、実際のHTML構造に完全に合致するセレクタを指定してください。
+
+### URLプレースホルダーと正規表現の設計ルール
+1. {workId}: URLから作品を識別するためのID（数字や文字列）を指します。
+2. {episodeId}: エピソード個別のID、または連番（話数）を指します。
+3. workIdPattern はURLから {workId} を抽出するためのキャプチャグループ () を含む正規表現です。
+4. episodeNumberPattern はURLから {episodeId} を抽出するためのキャプチャグループ () を含む正規表現です。
+5. tocPageURLTemplate には、{workId} プレースホルダーを含む目次（作品トップ）ページのURLテンプレートを指定します。
+6. episodeURLTemplate には、{workId} や {episodeId} プレースホルダーを含む、本文エピソードページのURLテンプレートを指定します。
+7. urlPatterns には、このプロファイルを適用するURLのパターンを、上記のプレースホルダーを用いて複数（目次用、本文用など）配列で指定します。
+
+### セレクタ設計のルール
+- tocEpisodeRowSelector: 目次ページにおける、各話エピソード1件分を表すCSSセレクタ。
+- tocEpisodeTitleSelector: 上記Row要素内から「エピソードのタイトル」を抽出するためのセレクタ。
+- tocEpisodeHrefSelector: 上記Row要素内から「本文URL（href属性）」を抽出するためのセレクタ。
+- tocEpisodeDateSelector: 上記Row要素内から「投稿日・更新日」を抽出するためのセレクタ。
+- episodeBodySelector: 本文ページにおける「小説の本文」を囲むコンテナのセレクタ（広告やノイズを含まない最も狭い範囲）。
+- episodeTitleSelector: 本文ページにおける「エピソードのサブタイトル」のセレクタ。
+- removeSelectors: 本文に含まれる広告、SNSボタン、スクリプトなど、読書に不要なタグを排除するためのCSSセレクタの配列。
 
 【出力フォーマット】
 {
-  "displayName": "サイト名",
+  "displayName": "サイト名（拡張）",
   "mode": "extendedReader",
-  "workIdPattern": "作品ID抽出の正規表現",
-  "episodeNumberPattern": "話数抽出の正規表現",
-  "episodeTitleSelector": "タイトルセレクタ",
-  "episodeBodySelector": "本文セレクタ",
-  "removeSelectors": ["広告等の削除要素"],
-  "preserveSelectors": ["ruby", "rt", "img"]
+  "isEnabled": true,
+  "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+  "acceptLanguage": "ja-JP,ja;q=0.9",
+  "timeoutSeconds": 30,
+  "maxPrefetchEpisodes": 5,
+  "cachePolicy": "library",
+  "requestIntervalSeconds": 1,
+  "workIdPattern": "作品IDを抽出する正規表現（例：site\\\\.com/novel/([0-9]+)）",
+  "episodeNumberPattern": "エピソードIDを抽出する正規表現（例：/episode/([0-9]+)）",
+  "tocPageURLTemplate": "目次URLテンプレート（例：https://www.site.com/novel/{workId}）",
+  "urlPatterns": [
+    "https://www.site.com/novel/{workId}",
+    "https://www.site.com/novel/{workId}/episode/{episodeId}"
+  ],
+  "tocEpisodeRowSelector": "目次行のセレクタ（例：.episode-item, tr.row）",
+  "tocEpisodeTitleSelector": "タイトルセレクタ（例：.title, a）",
+  "tocEpisodeHrefSelector": "リンク(aタグ)のセレクタ（例：a）",
+  "tocEpisodeDateSelector": "投稿日のセレクタ（例：time, .date）",
+  "tocEpisodeNumberRegex": "タイトルやURLから話数を抽出する正規表現（例：第\\\\s*([0-9]+)\\\\s*話）",
+  "tocNextPageSelector": "目次の「次へ」ボタンのセレクタ（無い場合は空文字）",
+  "episodeURLTemplate": "本文URLテンプレート（例：https://www.site.com/novel/{workId}/episode/{episodeId}）",
+  "episodeTitleSelector": "本文ページの話タイトルセレクタ（例：h1, .episode-title）",
+  "episodePrefaceSelector": "前書きのセレクタ（無い場合は空文字）",
+  "episodeBodySelector": "本文のセレクタ（例：#novelBody, .novel-text）",
+  "episodeAfterwordSelector": "後書きのセレクタ（無い場合は空文字）",
+  "removeSelectors": [
+    "script",
+    "style",
+    "noscript",
+    "div.ad-container"
+  ]
 }
 
-【ターゲットHTML】
-[ここにHTMLを貼り付け]</code>
+【ターゲット情報】
+1. 対象サイトの主要URL：
+   - 目次ページ：[ここに目次ページのURLを記入]
+   - 本文ページ：[ここに本文ページのURLを記入]
+2. 目次ページのHTML：
+   [ここに目次ページのHTMLソースの一部、または全体を貼り付け]
+3. 本文ページのHTML：
+   [ここに本文ページのHTMLソースの一部、または全体を貼り付け]</code>
             </div>
 
             <div style="background: rgba(201, 160, 99, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--accent-color); font-size: 0.9rem; margin-top: 2rem;">
                 <strong>⚠️ 拡張プロファイルの運用に関するガイドライン</strong>
                 <ul style="margin-top: 0.5rem; margin-left: 1.2rem;">
-                    <li>プロファイルを作成・適用する際は、対象サイトの利用規約を尊重してください。</li>
+                    <li>本アプリはデフォルトで「ブラウザ読書モード」を提供しています。縦書き化を目的としたプロファイルの適用は、対象サイトの利用規約を尊重し、ユーザー様の自己責任で行ってください。</li>
                     <li>サイト側が意図しない形式でのデータ取得や、規約に抵触するような自動化・改変を目的としたプロファイルの利用および配布は固くお断りいたします。</li>
                     <li>本機能はあくまで「個人の読書環境の最適化」を支援するためのツールです。プロファイルの適用結果に関する法的責任はすべてユーザー様に帰属します。</li>
                 </ul>
