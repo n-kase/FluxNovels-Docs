@@ -440,6 +440,8 @@
 - tocEpisodeTitleSelector: 上記Row要素内から「エピソードのタイトル」を抽出するためのセレクタ。
 - tocEpisodeHrefSelector: 上記Row要素内から「本文URL（href属性）」を抽出するためのセレクタ。
 - tocEpisodeDateSelector: 上記Row要素内から「投稿日・更新日」を抽出するためのセレクタ。
+- tocChapterRowSelector: 目次ページにおける、各章（チャプター）1件分を表すCSSセレクタ。章立てがないサイトでは空文字。
+- tocChapterSelector: 上記章Row要素内から「章タイトル」を抽出するためのセレクタ。章立てがないサイトでは空文字。
 - episodeBodySelector: 本文ページにおける「小説の本文」を囲むコンテナのセレクタ（広告やノイズを含まない最も狭い範囲）。
 - episodeTitleSelector: 本文ページにおける「エピソードのサブタイトル」のセレクタ。
 - removeSelectors: 本文に含まれる広告、SNSボタン、スクリプトなど、読書に不要なタグを排除するためのCSSセレクタの配列。
@@ -467,6 +469,8 @@
   "tocEpisodeHrefSelector": "リンク(aタグ)のセレクタ（例：a）",
   "tocEpisodeDateSelector": "投稿日のセレクタ（例：time, .date）",
   "tocEpisodeNumberRegex": "タイトルやURLから話数を抽出する正規表現（例：第\\\\s*([0-9]+)\\\\s*話）",
+  "tocChapterRowSelector": "章（チャプター）行のセレクタ（例：.chapter-item, .chapter-header）。章立てがない場合は空文字",
+  "tocChapterSelector": "章タイトルのセレクタ（例：.chapter-title, h3）。章立てがない場合は空文字",
   "tocNextPageSelector": "目次の「次へ」ボタンのセレクタ（無い場合は空文字）",
   "episodeURLTemplate": "本文URLテンプレート（例：https://www.site.com/novel/{workId}/episode/{episodeId}）",
   "episodeTitleSelector": "本文ページの話タイトルセレクタ（例：h1, .episode-title）",
